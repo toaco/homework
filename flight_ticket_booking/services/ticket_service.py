@@ -24,7 +24,7 @@ class TicketService(object):
         return ticket
 
     @classmethod
-    def buy_round_trip_ticket(cls, customer_type, from_, to, departing_date, returning_date):
+    def buy_round_trip_tickets(cls, customer_type, from_, to, departing_date, returning_date):
         departing_ticket = cls.buy_ticket(customer_type=customer_type, from_=from_, to=to, date=departing_date)
         returning_ticket = cls.buy_ticket(customer_type=customer_type, from_=to, to=from_, date=returning_date)
         return departing_ticket, returning_ticket
