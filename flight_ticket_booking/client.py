@@ -17,7 +17,7 @@ class Client(object):
         self.to = to
         self.select_strategy = select_strategy
 
-    def by_round_trip_ticket(self):
+    def buy_round_trip_ticket(self):
         # 处理输入
         print 'input:'
         try:
@@ -49,7 +49,7 @@ class Client(object):
 
 if __name__ == '__main__':
     client = Client(from_='chengdu', to='xian', select_strategy=Nearly12pmStrategy())
-    client.by_round_trip_ticket()
+    client.buy_round_trip_ticket()
     """
     input:
     REGULAR, 20190213WED, 20190220WED
