@@ -10,9 +10,15 @@ class Client(object):
         self.from_ = from_
         self.to = to
 
-    def by_round_trip_ticket(self, input):
+    def by_round_trip_ticket(self):
         # 处理输入
-        customer_type, departing_date, returning_date = input.split(',')
+        print 'input:'
+        try:
+            customer_type, departing_date, returning_date = map(lambda x: x.strip(), raw_input().split(','))
+        except ValueError:
+            print('input format error!')
+            return
+
         customer_type = customer_type.lower()
         departing_date = datetime.datetime.strptime(departing_date[:8], '%Y%m%d')
         returning_date = datetime.datetime.strptime(returning_date[:8], '%Y%m%d')
@@ -28,11 +34,24 @@ class Client(object):
         )
 
         # 输出
+        print 'output:'
         print departing_ticket.flight.name
         print returning_ticket.flight.name
 
 
 if __name__ == '__main__':
     client = Client(from_='chengdu', to='xian')
-    client.by_round_trip_ticket('REGULAR,20190213WED,20190220WED')
-    client.by_round_trip_ticket('REWARD,20190213WED,20190220WED')
+    client.by_round_trip_ticket()
+    """
+    input:
+    REGULAR, 20190213WED, 20190220WED
+    output:
+    GD2607
+    GD2501
+    
+    input:
+    REWARD, 20190213WED, 20190220WED
+    output:
+    GD2502
+    GD2501
+    """
