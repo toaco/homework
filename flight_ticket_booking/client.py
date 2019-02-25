@@ -3,12 +3,19 @@
 import datetime
 
 from flight_ticket_booking.services.ticket_service import TicketService
+from flight_ticket_booking.strategies.filght_select_strategies.nearly_12pm_strategy import Nearly12pmStrategy
 
 
 class Client(object):
-    def __init__(self, from_, to):
+    def __init__(self, from_, to, select_strategy):
+        """
+        :param from_: 出发地
+        :param to: 目的地
+        :param select_strategy: 多个航班可选择时的航班选择策略
+        """
         self.from_ = from_
         self.to = to
+        self.select_strategy = select_strategy
 
     def by_round_trip_ticket(self):
         # 处理输入
@@ -31,6 +38,7 @@ class Client(object):
             to=self.to,
             departing_date=departing_date,
             returning_date=returning_date,
+            select_strategy=self.select_strategy,
         )
 
         # 输出
@@ -40,7 +48,7 @@ class Client(object):
 
 
 if __name__ == '__main__':
-    client = Client(from_='chengdu', to='xian')
+    client = Client(from_='chengdu', to='xian', select_strategy=Nearly12pmStrategy())
     client.by_round_trip_ticket()
     """
     input:
