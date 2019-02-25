@@ -1,7 +1,7 @@
 from flight_ticket_booking.utlis.date_helper import DateHelper
 
 
-class Flight:
+class Flight(object):
     def __init__(self, name, from_, to, time, prices):
         self.name = name
         self.from_ = from_

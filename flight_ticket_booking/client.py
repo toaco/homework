@@ -19,7 +19,7 @@ class Client(object):
 
         # 调用服务
         ticket_service = TicketService()
-        departing_ticket, returning_ticket = ticket_service.by_round_trip_ticket(
+        departing_ticket, returning_ticket = ticket_service.buy_round_trip_ticket(
             customer_type=customer_type,
             from_=self.from_,
             to=self.to,
